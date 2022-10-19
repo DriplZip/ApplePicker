@@ -2,13 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Basket : MonoBehaviour
 {
+    [Header("Set Dynamically")] private Text _scoreCounterText;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject scoreCounter = GameObject.Find("ScoreCounter");
+
+        _scoreCounterText = scoreCounter.GetComponent<Text>();
+        _scoreCounterText.text = "0";
     }
 
     // Update is called once per frame
@@ -30,5 +36,12 @@ public class Basket : MonoBehaviour
         GameObject collidedWith = collision.gameObject;
 
         if (collidedWith.CompareTag("Apple")) Destroy(collidedWith);
+
+        int score = int.Parse(_scoreCounterText.text);
+        score++;
+
+        _scoreCounterText.text = score.ToString();
+
+        if (score > HighScore.highScore) HighScore.highScore = score;
     }
 }

@@ -99,3 +99,4 @@ MonoBehaviour:
   basketPrefab: {fileID: 9013424035167289303, guid: 1cd084e355ca8f54d91a5067dbd82051,
     type: 3}
   bottomOfTheBasketY: -14
+  spaceBetweenBasketsY: 2
