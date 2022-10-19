@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         _basketsList.RemoveAt(basketIndex);
         Destroy(lastBasket);
 
-        if (_basketsList.Count == 0) SceneManager.LoadScene("MainScene");
+        if (_basketsList.Count == 0) SceneManager.LoadScene("EndScene");
     }
 
     // Update is called once per frame
