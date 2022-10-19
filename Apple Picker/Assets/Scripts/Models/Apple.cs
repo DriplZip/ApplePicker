@@ -18,6 +18,10 @@ public class Apple : MonoBehaviour
         if (transform.position.y < _endYCoordinateApple)
         {
             Destroy(this.gameObject);
+
+            GameManager applePicker = Camera.main.GetComponent<GameManager>();
+            
+            applePicker.destroyBasket();
         }
     }
 }
