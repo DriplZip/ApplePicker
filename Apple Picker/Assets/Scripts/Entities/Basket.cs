@@ -6,7 +6,9 @@ using UnityEngine.UI;
 
 public class Basket : MonoBehaviour
 {
-    [Header("Set Dynamically")] private Text _scoreCounterText;
+    private Text _scoreCounterText;
+
+    private readonly float _basketMovementLimit = 26f;
     
     // Start is called before the first frame update
     void Start()
@@ -21,14 +23,15 @@ public class Basket : MonoBehaviour
     void Update()
     {
         Vector3 currentMousePosition2d = Input.mousePosition;
+        
         currentMousePosition2d.z = Camera.main.nearClipPlane;
-        
+
         Vector3 currentMousePosition3d = Camera.main.ScreenToWorldPoint(currentMousePosition2d);
-        
+
         Vector3 basketPosition = this.transform.position;
         basketPosition.x = currentMousePosition3d.x;
 
-        this.transform.position = basketPosition;
+        if (Mathf.Abs(currentMousePosition3d.x) < _basketMovementLimit) this.transform.position = basketPosition;
     }
 
     private void OnCollisionEnter(Collision collision)
